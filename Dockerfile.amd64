@@ -6,9 +6,9 @@ ENV FLANNEL_ARCH=amd64
 
 RUN apk add --no-cache iproute2 net-tools ca-certificates iptables strongswan wget && update-ca-certificates
 RUN apk add wireguard-tools --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
-RUN wget https://github.com/coreos/flannel/releases/download/v0.11.0/flanneld-amd64
+RUN wget https://github.com/coreos/flannel/releases/download/v0.11.0/flanneld-amd64 -O flanneld-amd64
 
-RUN cp flanneld-$FLANNEL_ARCH /opt/bin/flanneld
+RUN cp flanneld-amd64 /opt/bin/flanneld
 COPY dist/mk-docker-opts.sh /opt/bin/
 
 ENTRYPOINT ["/opt/bin/flanneld"]
